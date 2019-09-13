@@ -35,6 +35,7 @@ function getTasks() {
       "tasks.id",
       "tasks.task_description",
       "tasks.task_notes",
+      "tasks.completed",
       "projects.project_name",
       "projects.project_description"
     )

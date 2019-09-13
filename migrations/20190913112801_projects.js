@@ -11,7 +11,7 @@ exports.up = function(knex) {
 
       table.text("project_description", 128)
         
-      table.text("completed", false)
+      table.boolean("completed").default(true)
 
     })
     
@@ -25,7 +25,7 @@ exports.up = function(knex) {
 
       table.text("task_notes")
       
-      table.text("completed", false)
+      table.boolean("completed").default(true)
 
       table.integer("project_id")
         .references('id')
