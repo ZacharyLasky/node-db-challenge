@@ -31,10 +31,10 @@ router.get("/projects", (req, res) => {
   model.getProjects()
     .then(projects => {
       projects.forEach(project => {
-        if (project.completed === 0) {
+        if (project.completed === 1) {
           project.completed = true;
         }
-        else if (project.completed === 1) {
+        else if (project.completed === 0) {
           project.completed = false;
         }
       })
@@ -61,10 +61,10 @@ router.get("/tasks", (req, res) => {
   model.getTasks()
     .then(tasks => {
       tasks.forEach(task => {
-        if (task.completed === 0) {
+        if (task.completed === 1) {
           task.completed = true;
         }
-        else if (task.completed === 1) {
+        else if (task.completed === 0) {
           task.completed = false;
         }
       })
