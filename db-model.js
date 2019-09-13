@@ -20,16 +20,7 @@ function postResource(resource) {
 
 function getProjects() {
   return db("projects")
-  
-  projects.forEach(project => {
-    if (project.completed === "0") {
-      project.completed = "true"
-    }
-    else if (project.completed === "1") {
-      project.completed = "false"
-    }
-    return projects
-  })
+
 }
 
 function postProject(project) {
@@ -37,16 +28,16 @@ function postProject(project) {
     .insert(project)
 }
 
-function getTasks(id) {
+function getTasks() {
   return db("tasks")
     .join("projects", "projects.id", "tasks.project_id")
     .select(
+      "tasks.id",
       "tasks.task_description",
       "tasks.task_notes",
       "projects.project_name",
-      "projects.project_number",
+      "projects.project_description"
     )
-    .where({"tasks.project_id": id})
 }
 
 function postTask(task) {

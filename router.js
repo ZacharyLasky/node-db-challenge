@@ -29,11 +29,18 @@ router.get("/resources", (req, res) => {
 // retrieving a list of projects.
 router.get("/projects", (req, res) => {
   model.getProjects()
-  
-   .then(projects => {
-     res.status(200).json(projects)
-   })
-   .catch(error => {
+    .then(projects => {
+      projects.forEach(project => {
+        if (project.completed === "0") {
+          project.completed = true;
+        }
+        else if (project.completed === "1") {
+          project.completed = false;
+        }
+      })
+      res.status(200).json(projects)
+    })
+    .catch(error => {
      res.status(500).json(error)
    })
 })
@@ -52,11 +59,18 @@ router.post("/projects", (req, res) => {
 // retrieving a list of tasks. 
 router.get("/tasks", (req, res) => {
   model.getTasks()
-  
-   .then(tasks => {
-     res.status(200).json(tasks)
-   })
-   .catch(error => {
+    .then(tasks => {
+      tasks.forEach(task => {
+        if (task.completed === "0") {
+          task.completed = true;
+        }
+        else if (task.completed === "1") {
+          task.completed = false;
+        }
+      })
+      res.status(200).json(tasks)
+    })
+    .catch(error => {
      res.status(500).json(error)
    })
 })
